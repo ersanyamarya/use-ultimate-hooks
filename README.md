@@ -12,11 +12,11 @@ npm install use-ultimate-hooks
 
 ```js
 export default function App() {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("John");
+  const [count, setCount] = useState(0)
+  const [name, setName] = useState('John')
 
-  const { count, setCount } = useUltimateState(0);
-  const { name, setName } = useUltimateState("John");
+  const { count, setCount } = useUltimateState(0)
+  const { name, setName } = useUltimateState('John')
 
   return (
     <div className="App">
@@ -25,9 +25,9 @@ export default function App() {
       <button onClick={() => setCount(count - 1)}>Decrement</button>
       <button onClick={() => setCount(0)}>Reset</button>
       <button onClick={() => setCount(count + 1)}>Increment</button>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <input value={name} onChange={e => setName(e.target.value)} />
     </div>
-  );
+  )
 }
 ```
 

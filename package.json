@@ -15,6 +15,7 @@
     "build": "tsdx build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "tsdx lint",
+    "lint-fix": "tsdx lint --fix",
     "prepare": "tsdx build",
     "size": "size-limit",
     "start": "tsdx watch",
@@ -25,23 +26,12 @@
       "pre-commit": "tsdx lint"
     }
   },
-  "prettier": {
-    "arrowParens": "avoid",
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "printWidth": 120,
-    "proseWrap": "never",
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.0",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "husky": "^8.0.1",
+    "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "size-limit": "^8.1.0",
