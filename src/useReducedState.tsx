@@ -1,5 +1,6 @@
 import { useReducer } from 'react'
 
+/* Defining an interface for the action object that is passed to the reducer. */
 interface Action<T> {
   type: 'updateFieldValue' | 'removeFieldValue' | 'updateState' | 'patchState' | 'resetFieldValue' | 'reset'
   field?: string
@@ -7,6 +8,12 @@ interface Action<T> {
   state?: T
 }
 
+/**
+ * It returns a new state object based on the action type and the action payload
+ * @param {T} state - The current state of the reducer.
+ * @param action - Action<T>
+ * @returns A new state object based on the action type and the action payload
+ */
 function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T | {} {
   switch (action.type) {
     case 'updateFieldValue':
@@ -32,8 +39,10 @@ function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T 
       return action.state || {}
   }
 }
+
 type KeyOfType<T, V> = { [P in keyof T]: T[P] extends V ? P : never }[keyof T]
 
+/* Defining the return type of the function `useReducedState` */
 export interface IUseReducedStateReturn<T> {
   state: T
   updateFieldValue: (field: KeyOfType<T, any>, value: any) => void
@@ -45,6 +54,10 @@ export interface IUseReducedStateReturn<T> {
   resetFieldValue: (field: KeyOfType<T, any>) => void
 }
 
+/**
+ * It returns a state object and a set of functions to update the state
+ * @param {T} [initialState] - The initial state of the form.
+ */
 export default function useReducedState<T>(initialState?: T): IUseReducedStateReturn<T> {
   const [state, dispatch] = useReducer(reducer, initialState || {})
 
