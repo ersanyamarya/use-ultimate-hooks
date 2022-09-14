@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useAppState } from './contextOfApp'
 export default function Right() {
-  const { state, updateState, updateFieldValue, removeFieldValue, clearState } = useAppState()
+  const { state, patchState, updateFieldValue, removeFieldValue, clearState } = useAppState()
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function Right() {
         </button>
         <button
           onClick={() => {
-            updateState({
+            patchState({
               user: {
                 name: 'John Doe',
                 email: 'asdas',

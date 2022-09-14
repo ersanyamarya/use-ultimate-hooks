@@ -25,7 +25,7 @@ function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T 
       return { ...state }
 
     case 'updateState':
-      return action.state || {}
+      return action.state ?? {}
 
     case 'patchState':
       return { ...state, ...action.state }
@@ -36,7 +36,7 @@ function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T 
 
     case 'reset':
     default:
-      return action.state || {}
+      return action.state ?? {}
   }
 }
 
