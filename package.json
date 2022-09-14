@@ -20,9 +20,11 @@
     "dev": "nodemon --ext ts,json --watch lib --exec node --inspect=0.0.0.0:9229 -r ts-node/register lib/index.ts",
     "format": "prettier --write \"**/*.{ts,ts,json,md}\"",
     "lint": "eslint --ext .jsx,.tsx ./lib",
+    "lint:fix": "eslint --ext .jsx,.tsx ./lib --fix",
     "start": "tsc --project tsconfig.json --watch --outDir ./dist",
     "test": "export LOG_LEVEL=debug; jest --config=./jest.config.js --runInBand --no-cache",
-    "test:watch": "npm run build && export LOG_LEVEL=debug; jest --config=./jest.config.js --runInBand --no-cache --watch"
+    "test:watch": "npm run build && export LOG_LEVEL=debug; jest --config=./jest.config.js --runInBand --no-cache --watch",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@types/jest": "^29.0.2",

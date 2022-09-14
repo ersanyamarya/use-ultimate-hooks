@@ -14,7 +14,7 @@ interface Action<T> {
  * @param action - Action<T>
  * @returns A new state object based on the action type and the action payload
  */
-function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T | {} {
+function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T {
   switch (action.type) {
     case 'updateFieldValue':
       if (action.field) return { ...state, [action.field]: action.value }
@@ -25,7 +25,7 @@ function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T 
       return { ...state }
 
     case 'updateState':
-      return action.state ?? {}
+      return action.state ?? state
 
     case 'patchState':
       return { ...state, ...action.state }
@@ -36,7 +36,7 @@ function reducer<T extends Record<string, any>>(state: T, action: Action<T>): T 
 
     case 'reset':
     default:
-      return action.state ?? {}
+      return action.state ?? state
   }
 }
 
@@ -59,7 +59,7 @@ export interface IUseReducedStateReturn<T> {
  * @param {T} [initialState] - The initial state of the form.
  */
 export default function useReducedState<T>(initialState?: T): IUseReducedStateReturn<T> {
-  const [state, dispatch] = useReducer(reducer, initialState || {})
+  const [state, dispatch] = useReducer(reducer, initialState ?? {})
 
   const updateFieldValue = (field: KeyOfType<T, any>, value: any) =>
     dispatch({ type: 'updateFieldValue', field: field.toString(), value })
@@ -74,10 +74,10 @@ export default function useReducedState<T>(initialState?: T): IUseReducedStateRe
   }
 
   const resetFieldValue = (field: KeyOfType<T, any>) =>
-    dispatch({ type: 'resetFieldValue', field: field.toString(), state: initialState || {} })
+    dispatch({ type: 'resetFieldValue', field: field.toString(), state: initialState ?? {} })
 
   const clearState = () => dispatch({ type: 'reset', state: {} })
-  const resetState = () => dispatch({ type: 'reset', state: initialState || {} })
+  const resetState = () => dispatch({ type: 'reset', state: initialState ?? {} })
 
   return {
     state: state as T,

@@ -28,21 +28,21 @@ export default function App() {
       <div>{state.name}</div>
       <button onClick={() => updateState({count: state.count + 1})>Increment</button>
       <button onClick={() => updateState({name: 'Jane'})>Change name</button>
-    <>
+    </>
   )
 }
 ```
 
 ## Hooks
 
+### useReducedState
+
+```js
+const [value, setValue] = useReducedState(key, initialValue)
+```
+
 ### useLocalStorage
 
 ```js
 const [value, setValue] = useLocalStorage(key, initialValue)
-```
-
-### useSessionStorage
-
-```js
-const [value, setValue] = useSessionStorage(key, initialValue)
 ```
