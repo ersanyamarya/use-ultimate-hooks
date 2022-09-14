@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useAppState } from './contextOfApp'
 export default function Right() {
   const { state, patchState, updateFieldValue, removeFieldValue, clearState } = useAppState()

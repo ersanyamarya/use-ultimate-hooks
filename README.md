@@ -10,23 +10,25 @@ npm install use-ultimate-hooks
 
 ## Usage
 
-```js
+```typescript
+import { IUseReducedStateReturn, useReducedState } from 'use-ultimate-hooks'
+interface IState {
+  count: number
+  name: string
+}
 export default function App() {
-  const [count, setCount] = useState(0)
-  const [name, setName] = useState('John')
-
-  const { count, setCount } = useUltimateState(0)
-  const { name, setName } = useUltimateState('John')
+  const {state, updateState} = useReducedState<IState>({
+    count: 0,
+    name: 'John'
+  })
 
   return (
-    <div className="App">
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-      <button onClick={() => setCount(0)}>Reset</button>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <input value={name} onChange={e => setName(e.target.value)} />
-    </div>
+    <>
+      <div>{state.count}</div>
+      <div>{state.name}</div>
+      <button onClick={() => updateState({count: state.count + 1})>Increment</button>
+      <button onClick={() => updateState({name: 'Jane'})>Change name</button>
+    <>
   )
 }
 ```
