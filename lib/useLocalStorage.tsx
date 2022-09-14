@@ -13,34 +13,34 @@ export default function useLocalStorage<T>(key: string, initialValue?: T | null)
       const value = window.localStorage.getItem(key)
       switch (typeof initialValue) {
         case 'string':
-          if (value) return value as unknown as T
+          if (value) return (value as unknown) as T
           else {
             if (initialValue) window.localStorage.setItem(key, initialValue)
-            return initialValue as unknown as T
+            return (initialValue as unknown) as T
           }
         case 'boolean':
-          if (value) return getBooleanFromString(value) as unknown as T
+          if (value) return (getBooleanFromString(value) as unknown) as T
           else {
             if (initialValue) window.localStorage.setItem(key, getStringFromBoolean(initialValue))
-            return initialValue as unknown as T
+            return (initialValue as unknown) as T
           }
         case 'number':
-          if (value) return getNumberFromString(value) as unknown as T
+          if (value) return (getNumberFromString(value) as unknown) as T
           else {
             if (initialValue) window.localStorage.setItem(key, getStringFromNumber(initialValue))
-            return initialValue as unknown as T
+            return (initialValue as unknown) as T
           }
         case 'object':
-          if (value) return getJsonFromString(value) as unknown as T
+          if (value) return (getJsonFromString(value) as unknown) as T
           else {
-            if (initialValue) window.localStorage.setItem(key, getStringFromJson(initialValue as unknown as object))
-            return initialValue as unknown as T
+            if (initialValue) window.localStorage.setItem(key, getStringFromJson((initialValue as unknown) as object))
+            return (initialValue as unknown) as T
           }
         default:
-          return initialValue as unknown as T
+          return (initialValue as unknown) as T
       }
     } catch (error) {
-      return initialValue as unknown as T
+      return (initialValue as unknown) as T
     }
   })
   /**
@@ -62,7 +62,7 @@ export default function useLocalStorage<T>(key: string, initialValue?: T | null)
             window.localStorage.setItem(key, getStringFromNumber(newValue))
             break
           case 'object':
-            window.localStorage.setItem(key, getStringFromJson(newValue as unknown as object))
+            window.localStorage.setItem(key, getStringFromJson((newValue as unknown) as object))
             break
           default:
             break

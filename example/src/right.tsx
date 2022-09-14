@@ -24,7 +24,7 @@ export default function Right() {
             updateFieldValue('token', '1234567890')
           }}
         >
-          Toggle Marriage
+          Add Token
         </button>
         <button
           onClick={() => {
@@ -36,14 +36,14 @@ export default function Right() {
             })
           }}
         >
-          Patch Marriage
+          Patch State
         </button>
         <button
           onClick={() => {
             removeFieldValue('token')
           }}
         >
-          Remove Marriage
+          Remove Token
         </button>
         <button
           onClick={() => {

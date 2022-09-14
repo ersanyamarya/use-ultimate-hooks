@@ -1,5 +1,4 @@
 import * as React from 'react'
-import 'react-app-polyfill/ie11'
 import * as ReactDOM from 'react-dom'
 import { AppContextContainer } from './contextOfApp'
 import Left from './left'

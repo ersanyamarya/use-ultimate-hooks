@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { IUseReducedStateReturn, useReducedState } from '../dist'
+import { IUseReducedStateReturn, useReducedState } from '../../dist'
 
 interface IAppState {
   user?: {
